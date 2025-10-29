@@ -125,6 +125,7 @@ button.example-btn:hover{
     font-size: 0.9em;
     /* Ocultar flechas en input number */
     -moz-appearance: textfield;
+    appearance: textfield;
 }
 .matrix-input::-webkit-outer-spin-button,
 .matrix-input::-webkit-inner-spin-button {
