@@ -90,3 +90,44 @@ button.example-btn{
 button.example-btn:hover{
     background-color: #e0a800;
 }
+
+/* Contenedores de Matrices */
+.matrix-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 20px;
+}
+.matrix-box {
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background: #fdfdfd;
+}
+.matrix-box h3 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+/* Rejilla de la Matriz */
+.grid-container {
+    display: grid;
+    gap: 5px;
+    justify-content: center; /* Centra la rejilla */
+}
+.matrix-input {
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9em;
+    /* Ocultar flechas en input number */
+    -moz-appearance: textfield;
+}
+.matrix-input::-webkit-outer-spin-button,
+.matrix-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
