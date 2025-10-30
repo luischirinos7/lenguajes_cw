@@ -34,6 +34,75 @@ document.addEventListener('DOMContentLoaded', () => {
         generateGrid(matrixBContainer, parseInt(sizeBSelect.value), 'matrixB');
     });
 
+    function handleOperation(e) {
+        if (e.target.tagName !== 'BUTTON') return;
+        
+        clearOutput();
+        
+        const op = e.target.dataset.op;
+        const sizeA = parseInt(sizeASelect.value);
+        const sizeB = parseInt(sizeBSelect.value);
+        
+        let matrixA, matrixB, result;
+
+        try {
+            // Validaciones y ejecución de operaciones
+            switch (op) {
+                case 'add':
+                case 'subtract':
+                    if (sizeA !== sizeB) throw new Error("Las matrices deben tener el mismo tamaño.");
+                    matrixA = getMatrix(sizeA, 'matrixA');
+                    matrixB = getMatrix(sizeB, 'matrixB');
+                    result = (op === 'add') ? M.add(matrixA, matrixB) : M.subtract(matrixA, matrixB);
+                    break;
+
+                case 'multiply':
+                    if (sizeA !== sizeB) throw new Error("Las matrices deben tener el mismo tamaño.");
+                    matrixA = getMatrix(sizeA, 'matrixA');
+                    matrixB = getMatrix(sizeB, 'matrixB');
+                    result = M.multiply(matrixA, matrixB);
+                    break;
+
+                case 'multiplyScalarA':
+                    matrixA = getMatrix(sizeA, 'matrixA');
+                    result = M.multiplyScalar(matrixA, parseFloat(scalarInput.value));
+                    break;
+                    
+                case 'multiplyScalarB':
+                    matrixB = getMatrix(sizeB, 'matrixB');
+                    result = M.multiplyScalar(matrixB, parseFloat(scalarInput.value));
+                    break;
+
+                case 'transposeA':
+                    matrixA = getMatrix(sizeA, 'matrixA');
+                    result = M.transpose(matrixA);
+                    break;
+
+                case 'detA':
+                    matrixA = getMatrix(sizeA, 'matrixA');
+                    const det = M.determinant(matrixA);
+                    messageArea.textContent = `Determinante(A) = ${parseFloat(det.toFixed(4))}`;
+                    return;
+
+                case 'invA':
+                    matrixA = getMatrix(sizeA, 'matrixA');
+                    result = M.inverse(matrixA);
+                    break;
+
+                case 'identityA':
+                    result = M.identity(sizeA);
+                    break;
+            }
+            
+            if (result) {
+                displayResult(result);
+            }
+
+        } catch (error) {
+            showError(error.message);
+        }
+    }
+
     // Generar rejillas iniciales al cargar la página
     generateGrid(matrixAContainer, parseInt(sizeASelect.value), 'matrixA');
     generateGrid(matrixBContainer, parseInt(sizeBSelect.value), 'matrixB');
@@ -90,6 +159,53 @@ document.addEventListener('DOMContentLoaded', () => {
         messageArea.textContent = message;
         resultContainer.innerHTML = ''; // Limpiar resultado en caso de error
     }
+
+        /**
+     * Rellena una matriz con valores aleatorios.
+     * @param {number} size - El tamaño de la matriz.
+     * @param {string} idPrefix - Prefijo de los inputs.
+     */
+    function fillRandom(size, idPrefix) {
+        for (let i = 0; i < size; i++) {
+            for (let j = 0; j < size; j++) {
+                const input = document.getElementById(`${idPrefix}-${i}-${j}`);
+                // Enteros aleatorios entre -9 y 9
+                input.value = Math.floor(Math.random() * 19) - 9;
+            }
+        }
+    }
+    
+    /**
+     * Rellena una rejilla con los valores de una matriz dada.
+     * @param {number[][]} matrix - La matriz de valores.
+     * @param {string} idPrefix - 'A' o 'B'.
+     */
+    function fillGrid(matrix, idPrefix) {
+            for (let i = 0; i < matrix.length; i++) {
+            for (let j = 0; j < matrix[i].length; j++) {
+                const input = document.getElementById(`matrix${idPrefix}-${i}-${j}`);
+                if (input) {
+                    input.value = matrix[i][j];
+                }
+            }
+        }
+    }
+    
+    /**
+     * Carga valores de ejemplo en matrices 3x3.
+     */
+    function loadExample() {
+        if (parseInt(sizeASelect.value) !== 3 || parseInt(sizeBSelect.value) !== 3) {
+            showError("El ejemplo solo funciona si ambas matrices son 3x3.");
+            return;
+        }
+        const exampleA = [[1, 2, 3], [0, 1, 4], [5, 6, 0]];
+        const exampleB = [[8, 1, 4], [7, 2, 5], [3, 9, 6]];
+        fillGrid(exampleA, 'A');
+        fillGrid(exampleB, 'B');
+        clearOutput();
+    }
+
 
     // --- LÓGICA DE MATEMÁTICAS (FUNCIONES PURAS) ---
     // Usamos un objeto 'M' (de Matrix) para agrupar la lógica.
@@ -251,4 +367,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
     };     
+
+// ... (dentro de la sección EVENT LISTENERS)
+// ... (después del listener de btnGenerate)
+
+    // Botón de Valores Aleatorios
+    document.getElementById('btnRandom').addEventListener('click', () => {
+        clearOutput();
+        fillRandom(parseInt(sizeASelect.value), 'matrixA');
+        fillRandom(parseInt(sizeBSelect.value), 'matrixB');
+    });
+    
+    // Botón de Cargar Ejemplo
+    document.getElementById('btnExample').addEventListener('click', loadExample);
+
+    // Listener para todos los botones de operaciones
+    document.querySelector('.operations').addEventListener('click', handleOperation);
+    document.querySelector('.scalar-op').addEventListener('click', handleOperation);
+
 });
