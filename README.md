@@ -21,7 +21,7 @@ Para entrar desde el explorador, solo busca el directorio en el que lo guardaste
 
 3. Abre el archivo principal:
 
-Haz doble clic en el archivo calc.html para abrirlo en tu navegador web predeterminado.
+Haz doble clic en el archivo index.html para abrirlo en tu navegador web predeterminado.
 
 Funcionalidades y Guía de Uso
 
