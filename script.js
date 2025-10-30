@@ -90,6 +90,76 @@ document.addEventListener('DOMContentLoaded', () => {
         messageArea.textContent = message;
         resultContainer.innerHTML = ''; // Limpiar resultado en caso de error
     }
-    
 
+    // --- LÓGICA DE MATEMÁTICAS (FUNCIONES PURAS) ---
+    // Usamos un objeto 'M' (de Matrix) para agrupar la lógica.
+
+    const M = {
+
+        /**
+         * Crea una matriz de ceros de tamaño N.
+         * @returns {number[][]}
+         */
+        zeros: (size) => {
+            return Array(size).fill(0).map(() => Array(size).fill(0));
+        },
+
+        /**
+         * Suma dos matrices A y B.
+         * @returns {number[][]} A + B
+         */
+        add: (A, B) => {
+            return A.map((row, i) => 
+                row.map((val, j) => val + B[i][j])
+            );
+        },
+
+        /**
+         * Resta dos matrices A y B.
+         * @returns {number[][]} A - B
+         */
+        subtract: (A, B) => {
+            return A.map((row, i) =>
+                row.map((val, j) => val - B[i][j])
+            );
+        },
+
+        /**
+         * Multiplica una matriz A por un escalar.
+         * @returns {number[][]} A * s
+         */
+        multiplyScalar: (A, s) => {
+            return A.map(row => 
+                row.map(val => val * s)
+            );
+        },
+
+        /**
+         * Calcula la transpuesta de A.
+         * @returns {number[][]} A^T
+         */
+        transpose: (A) => {
+            const size = A.length;
+            const result = M.zeros(size);
+            for (let i = 0; i < size; i++) {
+                for (let j = 0; j < size; j++) {
+                    result[j][i] = A[i][j];
+                }
+            }
+            return result;
+        },
+
+        /**
+         * Genera una matriz identidad de tamaño N.
+         * @returns {number[][]} I
+         */
+        identity: (size) => {
+            const result = M.zeros(size);
+            for (let i = 0; i < size; i++) {
+                result[i][i] = 1;
+            }
+            return result;
+        }
+
+    }; 
 });
