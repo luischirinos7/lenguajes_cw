@@ -56,6 +56,33 @@
         </div>
     </div>
 
+    <!-- Botones de Operaciones -->
+        <h2>Operaciones</h2>
+        <div class="operations">
+            <button data-op="add">A + B</button>
+            <button data-op="subtract">A - B</button>
+            <button data-op="multiply">A * B</button>
+            <button data-op="transposeA">Transpuesta (A)</button>
+            <button data-op="detA">Determinante (A)</button>
+            <button data-op="invA">Inversa (A)</button>
+            <button data-op="identityA">Identidad (para A)</button>
+        </div>
+        <div class="scalar-op">
+            <label for="scalar">Escalar:</label>
+            <input type="number" id="scalar" value="2" step="any">
+            <button data-op="multiplyScalarA">A * Escalar</button>
+            <button data-op="multiplyScalarB">B * Escalar</button>
+        </div>
+
+        <!-- Área de Resultado -->
+        <h2>Resultado</h2>
+        <div id="message-area"></div>
+        <div class="matrix-section">
+            <div id="result-box" class="matrix-box">
+                <div id="result-container" class="grid-container"></div>
+            </div>
+        </div>
+
 
 
 
