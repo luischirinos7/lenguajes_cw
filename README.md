@@ -1,76 +1,166 @@
-Calculadora de Matrices Interactiva
+# Trivia Game
 
-Esta es una aplicación web simple que permite realizar operaciones matematicas con matrices cuadradas, desde 2x2 hasta 10x10. El proyecto está construido desde cero utilizando HTML, CSS y JavaScript.
+Esta es una aplicación web que permite jugar partidas de preguntas y respuestas usando la API pública OpenTDB, con opción de traducción automática al español mediante MyMemory API. El proyecto está construido completamente con HTML, CSS y JavaScript.
 
-Como Empezar (Uso Local)
+---
 
-Sigue estos pasos para clonar y ejecutar el proyecto en tu equipo local.
+## 🚀 Cómo Empezar (Uso Local)
 
-1. Clona el repositorio:
-Abre tu terminal o consola de Git y ejecuta el siguiente comando. 
+Sigue estos pasos para clonar y ejecutar el proyecto en tu equipo:
 
-git clone https://github.com/luischirinos7/lenguajes_cw
+### 1. Clona el repositorio
 
-2. Navega a la carpeta:
-Una vez clonado, entra en la carpeta del proyecto.
+Abre tu terminal o Git Bash y ejecuta:
 
-En caso de entrar por la terminal:
-cd lenguajes_cw
+```
+git clone https://github.com/luischirinos7/tu_repositorio
+```
 
-Para entrar desde el explorador, solo busca el directorio en el que lo guardaste.
+Asegúrate de reemplazar el enlace con el URL real de tu repo.
 
-3. Abre el archivo principal:
+### 2. Entra en la carpeta del proyecto
 
-Haz doble clic en el archivo index.html para abrirlo en tu navegador web predeterminado.
+Si estás en la terminal:
 
-Funcionalidades y Guía de Uso
+```
+cd tu_repositorio
+```
 
-La aplicación se divide en tres secciones principales: Controles, Operaciones y Resultado.
+Si estás desde el explorador de archivos, simplemente entra al directorio donde lo guardaste.
 
-1. Controles y Entrada de Datos
+### 3. Abre el archivo principal
 
-En la parte superior, puedes configurar las matrices de entrada:
+Haz doble clic sobre **index.html** para abrir la aplicación en tu navegador.
 
-Selectores de Tamaño: Elige el tamaño (N) para la Matriz A y la Matriz B, desde 2x2 hasta 10x10.
+---
 
-Generar Rejillas: Este botón actualiza la interfaz para crear las celdas de entrada según los tamaños seleccionados.
+## 🎮 Funcionalidades y Guía de Uso
 
-Valores Aleatorios: Rellena ambas matrices con números enteros aleatorios (entre -9 y 9) para pruebas rápidas.
+La aplicación está dividida en **tres secciones principales**: Configuración, Partida y Resultados.
 
-Cargar Ejemplo (3x3): Carga dos matrices 3x3 predefinidas. Esta funcion solo se activa si ambas matrices están configuradas en 3x3.
+---
 
-Entrada Manual: Puedes escribir cualquier valor numérico directamente en las celdas de la Matriz A y Matriz B.
+## 1. Configuración Inicial
 
-2. Sección de Operaciones
+Aquí puedes establecer cómo será tu partida:
 
-Una vez que tengas tus matrices, puedes usar los botones de operación:
+### ✏️ Datos del Jugador
 
-Operaciones entre dos matrices (A y B):
+* Escribe tu nombre (entre 2 y 20 caracteres).
 
-A + B: Suma de matrices.
+### 🔢 Número de Preguntas
 
-A - B: Resta de matrices.
+* Selecciona entre **5 y 20 preguntas**.
 
-A * B: Multiplicación de matrices.
+### 🎯 Dificultad
 
-Nota: Las matrices deben ser del mismo tamaño para estas operaciones (según los requisitos del proyecto).
+* Fácil
+* Media
+* Difícil
+* Aleatoria (si dejas el campo en blanco)
 
-Operaciones con una matriz (Matriz A):
+### 📚 Categoría
 
-Transpuesta (A): Calcula la matriz transpuesta de A.
+Puedes elegir categorías específicas como:
 
-Determinante (A): Calcula el determinante de A. El resultado se muestra como un solo número en el área de mensajes.
+* Conocimientos generales
+* Historia
+* Deportes
+* Arte
+* Videojuegos
+* Entre muchas otras.
 
-Inversa (A): Calcula la matriz inversa de A.
+Si lo dejas vacío, recibirás preguntas mixtas.
 
-Identidad (para A): Genera una matriz identidad del mismo tamaño que A.
+### 🌐 Traducir Preguntas
 
-Operaciones con Escalar:
+Activa o desactiva la opción **"Traducir al español"**.
+Usa la API de MyMemory para traducir preguntas y respuestas del inglés al español.
 
-A * Escalar / B * Escalar: Multiplica la matriz seleccionada por el número en el campo "Escalar".
+### ▶️ Iniciar Partida
 
-3. Área de Resultado
+Cuando completes todo, presiona **Iniciar Partida** para comenzar.
 
-Resultado: La matriz resultante de cualquier operación se mostrará en esta área. Las celdas son de solo lectura y están en color gris.
+---
 
-Mensajes de Error: Si una operación no es válida (por ejemplo, intentar invertir una matriz con determinante 0), se mostrará un mensaje de error claro en esta sección.
+## 2. Durante la Partida
+
+### ⏱️ Temporizador
+
+Cada pregunta tiene **20 segundos** para responder.
+Si el tiempo se agota, se cuenta como incorrecta.
+
+### ❓ Preguntas y Opciones
+
+* Las opciones se mezclan automáticamente.
+* Puedes ver tu progreso: *Pregunta X de Y*.
+
+### ⭐ Puntuación
+
+* +10 puntos por cada acierto.
+* Se muestra el total de correctas, incorrectas y puntaje actual.
+
+### 🔄 Avance Automático
+
+Después de contestar, la aplicación avanza sola a la siguiente pregunta.
+
+---
+
+## 3. Resultados Finales
+
+Al terminar la partida verás:
+
+* Nombre del jugador
+* Puntaje total
+* Preguntas correctas y totales
+* Porcentaje de acierto
+* Tiempo total empleado
+* Tiempo promedio por pregunta
+
+### 🔁 Opciones finales
+
+* **Jugar de nuevo con la misma configuración**
+* **Volver al menú de configuración**
+* **Finalizar partida**
+
+---
+
+## 🧩 Tecnologías Utilizadas
+
+* **HTML5**: Maquetación general
+* **CSS3**: Estilos responsivos, animaciones y diseño moderno
+* **JavaScript puro**: Lógica del juego, consumo de APIs, navegación entre vistas
+* **OpenTDB API**: Base de datos de preguntas
+* **MyMemory API**: Traducción automática al español
+
+---
+
+## 📁 Estructura del Proyecto
+
+```
+📦 proyecto
+├── index.html      → Interfaz principal del juego
+├── style.css       → Estilos visuales
+└── script.js       → Lógica completa del trivia
+```
+
+---
+
+## 📝 Notas Importantes
+
+* El proyecto no necesita servidores: funciona con doble clic.
+* La API gratuita de MyMemory tiene límites; si se exceden, la traducción puede fallar.
+* El avance es completamente automático: no hay botón “Siguiente”.
+
+---
+
+## 💡 Ideal Para
+
+* Prácticas universitarias
+* Estudiantes aprendiendo JavaScript
+* Proyectos web ligeros sin dependencias externas
+* Juegos simples para presentaciones o exposiciones
+
+---
+
+Si quieres agregar nuevas funciones, ¡adelante! El proyecto está pensado para ser fácil de entender y extender.
