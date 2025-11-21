@@ -1,123 +1,76 @@
-# Trivia Game
+Calculadora de Matrices Interactiva
 
-Esta es una aplicación web que permite jugar partidas de preguntas y respuestas usando la API pública OpenTDB, con opción de traducción automática al español mediante MyMemory API. El proyecto está construido completamente con HTML, CSS y JavaScript.
+Esta es una aplicación web simple que permite realizar operaciones matematicas con matrices cuadradas, desde 2x2 hasta 10x10. El proyecto está construido desde cero utilizando HTML, CSS y JavaScript.
 
----
+Como Empezar (Uso Local)
 
-## 🚀 Cómo Empezar (Uso Local)
+Sigue estos pasos para clonar y ejecutar el proyecto en tu equipo local.
 
-Sigue estos pasos para clonar y ejecutar el proyecto en tu equipo:
+1. Clona el repositorio:
+Abre tu terminal o consola de Git y ejecuta el siguiente comando. 
 
-### 1. Clona el repositorio
+git clone https://github.com/luischirinos7/lenguajes_cw
 
-Abre tu terminal o Git Bash y ejecuta:
+2. Navega a la carpeta:
+Una vez clonado, entra en la carpeta del proyecto.
 
-```
-git clone https://github.com/luischirinos7/tu_repositorio
-```
+En caso de entrar por la terminal:
+cd lenguajes_cw
 
-Asegúrate de reemplazar el enlace con el URL real de tu repo.
+Para entrar desde el explorador, solo busca el directorio en el que lo guardaste.
 
-### 2. Entra en la carpeta del proyecto
+3. Abre el archivo principal:
 
-Si estás en la terminal:
+Haz doble clic en el archivo index.html para abrirlo en tu navegador web predeterminado.
 
-```
-cd tu_repositorio
-```
+Funcionalidades y Guía de Uso
 
-Si estás desde el explorador de archivos, simplemente entra al directorio donde lo guardaste.
+La aplicación se divide en tres secciones principales: Controles, Operaciones y Resultado.
 
-### 3. Abre el archivo principal
+1. Controles y Entrada de Datos
 
-Haz doble clic sobre index.html para abrir la aplicación en tu navegador.
+En la parte superior, puedes configurar las matrices de entrada:
 
----
+Selectores de Tamaño: Elige el tamaño (N) para la Matriz A y la Matriz B, desde 2x2 hasta 10x10.
 
-## 🎮 Funcionalidades y Guía de Uso
+Generar Rejillas: Este botón actualiza la interfaz para crear las celdas de entrada según los tamaños seleccionados.
 
-La aplicación está dividida en tres secciones principales: Configuración, Partida y Resultados.
+Valores Aleatorios: Rellena ambas matrices con números enteros aleatorios (entre -9 y 9) para pruebas rápidas.
 
----
+Cargar Ejemplo (3x3): Carga dos matrices 3x3 predefinidas. Esta funcion solo se activa si ambas matrices están configuradas en 3x3.
 
-## 1. Configuración Inicial
+Entrada Manual: Puedes escribir cualquier valor numérico directamente en las celdas de la Matriz A y Matriz B.
 
-Aquí puedes establecer cómo será tu partida:
+2. Sección de Operaciones
 
-### ✏️ Datos del Jugador
+Una vez que tengas tus matrices, puedes usar los botones de operación:
 
-* Escribe tu nombre (entre 2 y 20 caracteres).
+Operaciones entre dos matrices (A y B):
 
-### 🔢 Número de Preguntas
+A + B: Suma de matrices.
 
-* Selecciona entre 5 y 20 preguntas.
+A - B: Resta de matrices.
 
-### 🎯 Dificultad
+A * B: Multiplicación de matrices.
 
-* Fácil
-* Media
-* Difícil
-* Mixta (si dejas el campo en blanco)
+Nota: Las matrices deben ser del mismo tamaño para estas operaciones (según los requisitos del proyecto).
 
-### 📚 Categoría
+Operaciones con una matriz (Matriz A):
 
-Puedes elegir categorías específicas como:
+Transpuesta (A): Calcula la matriz transpuesta de A.
 
-* Conocimientos generales
-* Historia
-* Deportes
-* Arte
-* Videojuegos
+Determinante (A): Calcula el determinante de A. El resultado se muestra como un solo número en el área de mensajes.
 
-Si lo dejas vacío, recibirás preguntas mixtas.
+Inversa (A): Calcula la matriz inversa de A.
 
-### 🌐 Traducir Preguntas
+Identidad (para A): Genera una matriz identidad del mismo tamaño que A.
 
-Activa o desactiva la opción "Traducir al español".
-Usa la API de MyMemory para traducir preguntas y respuestas del inglés al español.
+Operaciones con Escalar:
 
-### ▶️ Iniciar Partida
+A * Escalar / B * Escalar: Multiplica la matriz seleccionada por el número en el campo "Escalar".
 
-Cuando completes todo, presiona "Iniciar Partida" para comenzar.
+3. Área de Resultado
 
----
+Resultado: La matriz resultante de cualquier operación se mostrará en esta área. Las celdas son de solo lectura y están en color gris.
 
-## 2. Durante la Partida
-
-### ⏱️ Temporizador
-
-Cada pregunta tiene 20 segundos para responder.
-Si el tiempo se agota, se cuenta como incorrecta.
-
-### ❓ Preguntas y Opciones
-
-* Las opciones se mezclan automáticamente.
-* Puedes ver tu progreso: *Pregunta X de Y*.
-
-### ⭐ Puntuación
-
-* +10 puntos por cada acierto.
-* Se muestra el total de correctas, incorrectas y puntaje actual.
-
-### 🔄 Avance Automático
-
-Después de contestar, la aplicación avanza sola a la siguiente pregunta.
-
----
-
-## 3. Resultados Finales
-
-Al terminar la partida verás:
-
-* Nombre del jugador
-* Puntaje total
-* Preguntas correctas y totales
-* Porcentaje de acierto
-* Tiempo total empleado
-* Tiempo promedio por pregunta
-
-### Opciones finales
-
-* Jugar de nuevo con la misma configuración
-* Volver al menú de configuración
-* Finalizar partida
+Mensajes de Error: Si una operación no es válida (por ejemplo, intentar invertir una matriz con determinante 0), se mostrará un mensaje de error claro en esta sección.
